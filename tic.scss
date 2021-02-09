@@ -1,0 +1,93 @@
+*{
+  margin: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+.board{
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  justify-content: center;
+  height: 60vh;
+  width: 100vw;
+  align-content: center;
+
+  .cell{
+    border: 1px solid black;
+    height: 100px;
+    width: 100px;
+    cursor: pointer;
+
+
+    //remove-border
+    &:first-child, &:nth-child(2), &:nth-child(3){
+      border-top: none;
+    }
+    &:first-child, &:nth-child(4), &:nth-child(7){
+      border-left: none;
+    }
+    &:nth-child(3n+3){
+      border-right: none;
+    }
+    &:nth-child(7),&:nth-child(8),&:nth-child(9){
+      border-bottom: none;
+    }
+
+    //x and circle initialize
+    &.x::after, &.circle::after{
+      font-size: 4.5em;
+      position: relative;
+      left: 25px;
+      top: 10px;
+      cursor: not-allowed;
+    }
+
+
+
+    //x and circle
+    &.x::after{
+      content: 'X';
+    }
+
+    &.circle::after{
+      content: 'O';
+      left: 20px;
+    }
+
+  }
+}
+
+.winning-message{
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba($color: #000000, $alpha: 0.8);
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 5rem;
+  flex-direction: column;
+
+  button{
+    font-size: 3rem;
+    background-color: white;
+    border: 1px solid black;
+    padding: .25em .5em;
+    cursor: pointer;
+
+    &:hover{
+      background-color: black;
+      color: white;
+      border-color: white;
+      transition: 0.5s ease-in-out;
+    }
+  }
+
+
+  &.show{
+    display:flex;
+  }
+}

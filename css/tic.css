@@ -1,0 +1,105 @@
+* {
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+.board {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (auto)[3];
+      grid-template-columns: repeat(3, auto);
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 60vh;
+  width: 100vw;
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+
+.board .cell {
+  border: 1px solid black;
+  height: 100px;
+  width: 100px;
+  cursor: pointer;
+}
+
+.board .cell:first-child, .board .cell:nth-child(2), .board .cell:nth-child(3) {
+  border-top: none;
+}
+
+.board .cell:first-child, .board .cell:nth-child(4), .board .cell:nth-child(7) {
+  border-left: none;
+}
+
+.board .cell:nth-child(3n+3) {
+  border-right: none;
+}
+
+.board .cell:nth-child(7), .board .cell:nth-child(8), .board .cell:nth-child(9) {
+  border-bottom: none;
+}
+
+.board .cell.x::after, .board .cell.circle::after {
+  font-size: 4.5em;
+  position: relative;
+  left: 25px;
+  top: 10px;
+  cursor: not-allowed;
+}
+
+.board .cell.x::after {
+  content: 'X';
+}
+
+.board .cell.circle::after {
+  content: 'O';
+  left: 20px;
+}
+
+.winning-message {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: white;
+  font-size: 5rem;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.winning-message button {
+  font-size: 3rem;
+  background-color: white;
+  border: 1px solid black;
+  padding: .25em .5em;
+  cursor: pointer;
+}
+
+.winning-message button:hover {
+  background-color: black;
+  color: white;
+  border-color: white;
+  -webkit-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
+}
+
+.winning-message.show {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+/*# sourceMappingURL=tic.css.map */
